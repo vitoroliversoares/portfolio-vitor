@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitor Soares | Data & Backend</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>e
+<body>
+
+    <div class="background-grid"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">VS.</a>
+            <ul class="nav-links">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#skills">Stack</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#contact" class="btn-nav">Contato</a></li>
+            </ul>
+            
+            <button id="theme-toggle" class="theme-btn">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-frame">
+                <img src="perfil.jpg" alt="Vitor Soares" class="hero-img">
+            </div>
+            <h1 class="hero-name">Vitor Soares</h1>
+            <div class="typing-container">
+                <span class="typing-text">Dados, Códigos & Soluções.</span>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="curriculo.pdf" target="_blank" class="btn primary">
+                    <i class="fas fa-download"></i> Baixar CV
+                </a>
+                <a href="#projects" class="btn secondary">Ver Projetos</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <section id="about" class="section-padding">
+            <h2 class="section-title hidden">Sobre Mim</h2>
+            <p class="bio-text hidden">
+                Migrando do Suporte Técnico para a Engenharia de Dados. Meu foco é 
+                <strong>eficiência e integridade</strong>. Tenho experiência prática transformando 
+                dados brutos em insights (Tableau) e automatizando processos manuais (Python/SQL) 
+                para reduzir custos e SLAs.
+            </p>
+
+            <div class="values-grid">
+                <div class="value-card hidden">
+                    <i class="fas fa-rocket icon-box"></i>
+                    <h3>Autodidata Ágil</h3>
+                    <p>Curva de aprendizado acelerada em novas stacks.</p>
+                </div>
+                <div class="value-card hidden">
+                    <i class="fas fa-users icon-box"></i>
+                    <h3>Team Player</h3>
+                    <p>Comunicação transparente é chave para o sucesso.</p>
+                </div>
+                <div class="value-card hidden">
+                    <i class="fas fa-sync-alt icon-box"></i>
+                    <h3>Melhoria Contínua</h3>
+                    <p>Foco constante em otimização de processos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding">
+            <h2 class="section-title hidden">Tech Stack</h2>
+            <div class="skills-wrapper hidden">
+                <span class="tag"><i class="fab fa-python"></i> Python</span>
+                <span class="tag"><i class="fas fa-database"></i> PostgreSQL</span>
+                <span class="tag"><i class="fas fa-chart-line"></i> Tableau</span>
+                <span class="tag"><i class="fab fa-java"></i> Java</span>
+                <span class="tag"><i class="fas fa-server"></i> ETL</span>
+            </div>
+
+            <div class="education-box hidden">
+                <h3><i class="fas fa-graduation-cap"></i> Formação</h3>
+                <div class="edu-item">
+                    <span class="year">2025 - 2028</span>
+                    <div>
+                        <strong>Sistemas de Informação</strong>
+                        <p>FAESA (Bacharelado)</p>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <span class="year">2025</span>
+                    <div>
+                        <strong>Fundamentos Python 1</strong>
+                        <p>Cisco Networking Academy</p>
+                        <a href="certificado-python.pdf" target="_blank" class="link-small">Ver Certificado</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding">
+            <h2 class="section-title hidden">Projetos em Destaque</h2>
+            <div class="projects-grid hidden">
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Automação ETL</h3>
+                    <p>Sincronização segura entre Supabase (Cloud) e Postgres Local.</p>
+                    <a href="https://github.com/vitoroliversoares/etl-supabase-postgres" class="btn-card">Ver Código</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Help Desk System</h3>
+                    <p>Gestão de tickets de suporte com Backend Java e POO.</p>
+                    <a href="https://github.com/vitoroliversoares/SistemaChamadosHelpDesk" class="btn-card">Ver Código</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding footer-section">
+            <h2 class="section-title center hidden">Vamos Conversar?</h2>
+            <div class="social-big hidden">
+                <a href="https://www.linkedin.com/in/vitor-soares-ti/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/vitoroliversoares" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:vitordeoliveirasoares092@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>© 2026 Vitor Soares</p>
+        </section>
+
+    </div>
+
+    <script>
+        // 1. Observador Geral (Aparecer/Sumir elementos)
+        const observerScroll = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observerScroll.observe(el));
+
+        // 2. Observador Específico para o Efeito de Digitação
+        const typingText = document.querySelector('.typing-text');
+        
+        const observerTyping = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Se entrou na visão: Começa a digitar
+                    entry.target.classList.remove('erasing');
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                    entry.target.classList.add('erasing');
+                }
+            });
+        });
+
+        if (typingText) {
+            observerTyping.observe(typingText);
+        }
+    </script>
+
+</body>
+</html>
+
+<script>
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeBtn.querySelector('i');
+        const body = document.body;
+
+        // Função para atualizar o ícone
+        const updateIcon = () => {
+            if (body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon'); // Mostra Lua para voltar ao escuro
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun'); // Mostra Sol para ir ao claro
+            }
+        };
+
+        // Verifica se o usuário já tinha salvo uma preferência antes
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            updateIcon();
+        }
+
+        // Evento de Clique
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            updateIcon();
+            
+            // Salva a escolha no navegador
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
