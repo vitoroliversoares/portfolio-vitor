@@ -151,13 +151,23 @@ body {
 
 .btn { text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
 .btn.primary { 
-    background: linear-gradient(45deg, var(--accent), var(--accent-secondary)); /* Gradiente no botão */
+    background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
     color: white; border: none;
 }
 .btn.primary:hover { opacity: 0.9; box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); }
 
-.btn.secondary { border: 1x solid var(--border); color: var(--text-main); }
-.btn.secondary:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+.btn.secondary { 
+    border: 1px solid var(--border);
+    color: var(--text-main); 
+    background: transparent;
+}
+
+.btn.secondary:hover { 
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
 .btn-card { display: inline-block; margin-top: 15px; font-size: 0.9rem; color: var(--accent); text-decoration: none; font-weight: bold; }
 
 .hidden {
