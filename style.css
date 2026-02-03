@@ -45,6 +45,10 @@ body {
 .btn-nav { border: 1px solid var(--border); padding: 6px 15px; border-radius: 6px; }
 .btn-nav:hover { border-color: var(--accent); color: #fff !important; box-shadow: 0 0 10px rgba(139, 92, 246, 0.3); }
 
+section {
+    scroll-margin-top: 100px;
+}
+
 .hero {
     height: 90vh;
     display: flex; align-items: center; justify-content: center;
