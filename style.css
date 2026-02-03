@@ -157,15 +157,17 @@ body {
 .btn.primary:hover { opacity: 0.9; box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); }
 
 .btn.secondary { 
-    border: 1px solid var(--border); 
-    color: var(--text-main);
-    var(--text-main);
+    border: 1px solid transparent !important; 
+    background: transparent;
+    color: var(--text-muted); 
+    box-shadow: none;
 }
 
 .btn.secondary:hover { 
-    border-color: var(--text-main);
+    border-color: var(--accent) !important; 
+    color: var(--accent); 
     background: rgba(139, 92, 246, 0.1);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); 
 }
 
 .btn-card { display: inline-block; margin-top: 15px; font-size: 0.9rem; color: var(--accent); text-decoration: none; font-weight: bold; }
