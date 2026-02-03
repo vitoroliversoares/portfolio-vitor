@@ -141,11 +141,10 @@
     </div>
 
     <script>
-        // 1. Observador Geral (Aparecer/Sumir elementos)
         const observerScroll = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entryrget.classList.add('show');
+                    entry.target.classList.add('show');
                 } else {
                     entry.target.classList.remove('show');
                 }
@@ -155,13 +154,11 @@
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observerScroll.observe(el));
 
-        // 2. Observador Específico para o Efeito de Digitação
         const typingText = document.querySelector('.typing-text');
         
         const observerTyping = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // Se entrou na visão: Começa a digitar
                     entry.target.classList.remove('erasing');
                     entry.target.classList.add('active');
                 } else {
@@ -184,30 +181,26 @@
         const themeIcon = themeBtn.querySelector('i');
         const body = document.body;
 
-        // Função para atualizar o ícone
         const updateIcon = () => {
             if (body.classList.contains('light-mode')) {
                 themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon'); // Mostra Lua para voltar ao escuro
+                themeIcon.classList.add('fa-moon');
             } else {
                 themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun'); // Mostra Sol para ir ao claro
+                themeIcon.classList.add('fa-sun');
             }
         };
 
-        // Verifica se o usuário já tinha salvo uma preferência antes
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             body.classList.add('light-mode');
             updateIcon();
         }
 
-        // Evento de Clique
         themeBtn.addEventListener('click', () => {
             body.classList.toggle('light-mode');
             updateIcon();
             
-            // Salva a escolha no navegador
             if (body.classList.contains('light-mode')) {
                 localStorage.setItem('theme', 'light');
             } else {
