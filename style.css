@@ -273,7 +273,6 @@ body.light-mode .tag {
     border-radius: 12px;
     position: relative;
     border-left: 4px solid var(--accent);
-    transition: 0.3s;
 }
 
 .experience-card:hover {
