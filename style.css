@@ -68,7 +68,10 @@ body {
 }
 
 .hero-name {
-    font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -2px;
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    margin-bottom: 10px; 
+    letter-spacing: -2px;
     background: linear-gradient(to right, #fff, var(--accent-glow));
     background-clip: text;
     -webkit-background-clip: text;
@@ -133,7 +136,7 @@ body {
 .value-card:hover, .card:hover { 
     transform: translateY(-5px); 
     border-color: var(--accent); 
-    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.15); /* Sombra roxa sutil */
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.15);
 }
 .icon-box, .card-icon { font-size: 1.5rem; color: var(--accent); margin-bottom: 15px; }
 
