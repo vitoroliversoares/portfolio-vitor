@@ -157,14 +157,13 @@ body {
 .btn.primary:hover { opacity: 0.9; box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); }
 
 .btn.secondary { 
-    border: 1px solid transparent; 
-    color: var(--text-muted);
-    background: transparent;
+    border: 1px solid var(--border); 
+    color: var(--text-main);
+    var(--text-main);
 }
 
 .btn.secondary:hover { 
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--text-main);
     background: rgba(139, 92, 246, 0.1);
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
 }
