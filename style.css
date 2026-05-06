@@ -10,14 +10,13 @@
     --glass: rgba(5, 5, 5, 0.85);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 .background-grid {
@@ -181,20 +180,24 @@ section {
 
 .hidden {
     opacity: 0;
-    filter: blur(20px);
-    transform: translateY(50px);
-    transition: all 1s ease;
+    filter: blur(15px);
+    transform: translateY(60px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    will-change: opacity, transform, filter;
 }
 
 .show {
     opacity: 1;
     filter: blur(0);
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
-.hidden:nth-child(2) { transition-delay: 200ms; }
+/* Delays dinâmicos para criar o efeito "onda" (cascata) nos elementos de qualquer container */
+.hidden:nth-child(1) { transition-delay: 100ms; }
+.hidden:nth-child(2) { transition-delay: 250ms; }
 .hidden:nth-child(3) { transition-delay: 400ms; }
-.hidden:nth-child(4) { transition-delay: 600ms; }
+.hidden:nth-child(4) { transition-delay: 550ms; }
+.hidden:nth-child(5) { transition-delay: 700ms; }
 
 .social-big { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
 .social-big a { font-size: 2rem; color: var(--text-muted); transition: 0.2s; }
@@ -363,4 +366,117 @@ body.light-mode .tag {
     border-color: var(--accent);
     color: var(--accent);
     transform: rotate(15deg);
+}
+
+/* =========================================
+   GLASSMORPHISM & EFEITOS MODERNOS
+   ========================================= */
+
+/* Navbar com Glassmorphism */
+.glass-nav {
+    background: rgba(15, 23, 42, 0.4) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+body.light-mode .glass-nav {
+    background: rgba(255, 255, 255, 0.5) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Cards com Glassmorphism e interação de Hover */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /*
+     * A transição foi unificada aqui para suportar tanto o efeito de 'scroll-in' (vindo da classe .hidden)
+     * quanto o efeito de 'hover'. Isso garante que 'opacity', 'filter' e 'transform' animem juntos.
+    */
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), filter 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Luz radial roxa sutil no interior do card ao fazer hover */
+.glass-card::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 45px rgba(139, 92, 246, 0.2);
+    border-color: var(--accent);
+}
+
+.glass-card:hover::before {
+    opacity: 1;
+}
+/* Ajustes de Glassmorphism para Light Mode */
+body.light-mode .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .glass-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   FUNDO ANIMADO (BLOBS PARA O PARALLAX)
+   ========================================= */
+.blobs-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.moving-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.6;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.blob-1 {
+    background: linear-gradient(to right, #4f46e5, #3b82f6);
+    width: 450px;
+    height: 450px;
+    top: -100px;
+    left: -150px;
+}
+
+.blob-2 {
+    background: linear-gradient(to right, #059669, #10b981);
+    width: 350px;
+    height: 350px;
+    bottom: 100px;
+    right: -100px;
+}
+
+body.light-mode .blob-1 {
+    background: linear-gradient(to right, #818cf8, #93c5fd);
+    opacity: 0.4;
+}
+
+body.light-mode .blob-2 {
+    background: linear-gradient(to right, #34d399, #6ee7b7);
+    opacity: 0.4;
 }
