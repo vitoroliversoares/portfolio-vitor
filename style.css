@@ -49,7 +49,8 @@ section {
 }
 
 .hero {
-    height: 90vh;
+    min-height: 90vh;
+    padding-top: 80px;
     display: flex; align-items: center; justify-content: center;
     text-align: center;
     position: relative;
@@ -68,6 +69,12 @@ section {
     border: 3px solid var(--accent);
     margin-bottom: 20px; object-fit: cover; 
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+    animation: float-profile 5s ease-in-out infinite;
+}
+
+@keyframes float-profile {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
 .hero-name {
@@ -368,6 +375,17 @@ body.light-mode .tag {
     transform: rotate(15deg);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.lang-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
 /* =========================================
    GLASSMORPHISM & EFEITOS MODERNOS
    ========================================= */
@@ -405,10 +423,21 @@ body.light-mode .glass-nav {
 
 /* Luz radial roxa sutil no interior do card ao fazer hover */
 .glass-card::before {
-    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
-    opacity: 0; transition: opacity 0.5s ease;
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: conic-gradient(from 0deg, transparent 0%, transparent 30%, rgba(139, 92, 246, 0.15) 50%, transparent 70%, transparent 100%);
+    animation: rotate-glow 10s linear infinite;
+    opacity: 0.2; /* Luz sutil constante */
+    transition: opacity 0.5s ease;
     pointer-events: none;
+    z-index: 0;
+}
+
+/* Garante que os textos do card fiquem acima do brilho giratório */
+.glass-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .glass-card:hover {
@@ -453,6 +482,12 @@ body.light-mode .glass-card:hover {
     opacity: 0.6;
     pointer-events: none;
     will-change: transform;
+    animation: rotate-blob 20s linear infinite;
+}
+
+@keyframes rotate-blob {
+    0% { rotate: 0deg; }
+    100% { rotate: 360deg; }
 }
 
 .blob-1 {
@@ -479,4 +514,78 @@ body.light-mode .blob-1 {
 body.light-mode .blob-2 {
     background: linear-gradient(to right, #34d399, #6ee7b7);
     opacity: 0.4;
+}
+
+/* =========================================
+   DISCLAIMER INTELIGÊNCIA ARTIFICIAL
+   ========================================= */
+.ai-disclaimer {
+    margin: 50px auto 30px auto;
+    max-width: 680px;
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    /* Ajustes extras de cor para se destacar ainda mais */
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(59, 130, 246, 0.05));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+@keyframes rotate-glow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.ai-icon-wrapper {
+    flex-shrink: 0;
+    width: 55px; height: 55px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    color: var(--accent);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+    z-index: 1;
+}
+
+/* Aplicando o efeito flutuante para todos os ícones em destaque no site */
+.ai-icon-wrapper i,
+.icon-box i,
+.card-icon i,
+.social-big a i,
+.education-box h3 i {
+    display: inline-block;
+    animation: float-icon 3s ease-in-out infinite;
+}
+
+@keyframes float-icon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.ai-disclaimer p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+    z-index: 1;
+}
+
+.ai-disclaimer p strong {
+    background: linear-gradient(to right, var(--accent), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+body.light-mode .ai-disclaimer {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(59, 130, 246, 0.08));
+    border-color: rgba(139, 92, 246, 0.25);
+}
+
+@media (max-width: 600px) {
+    .ai-disclaimer { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
 }

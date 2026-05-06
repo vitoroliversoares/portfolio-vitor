@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitor Soares | Data & Backend</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='70' font-family='sans-serif' font-size='60' font-weight='bold' fill='%238b5cf6' text-anchor='middle'>VS.</text></svg>">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,16 +23,21 @@
         <div class="nav-container">
             <a href="#home" class="logo">VS.</a>
             <ul class="nav-links">
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#experience">Experiência</a></li>
-                <li><a href="#skills">Stack</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#contact" class="btn-nav">Contato</a></li>
+                <li><a href="#about" data-i18n="nav_about">Sobre</a></li>
+                <li><a href="#experience" data-i18n="nav_experience">Experiência</a></li>
+                <li><a href="#skills" data-i18n="nav_stack">Stack</a></li>
+                <li><a href="#projects" data-i18n="nav_projects">Projetos</a></li>
+                <li><a href="#contact" class="btn-nav" data-i18n="nav_contact">Contato</a></li>
             </ul>
             
-            <button id="theme-toggle" class="theme-btn">
-                <i class="fas fa-sun"></i>
-            </button>
+            <div class="nav-actions">
+                <button id="lang-toggle" class="theme-btn" style="margin-left: 0;">
+                    <span class="lang-text">EN</span>
+                </button>
+                <button id="theme-toggle" class="theme-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
         </div>
     </nav>
     
@@ -42,14 +48,14 @@
             </div>
             <h1 class="hero-name">Vitor Soares</h1>
             <div class="typing-container">
-                <span class="typing-text">Engenharia e Análise de Dados | Backend Python | Automação.</span>
+                <span class="typing-text" data-i18n="hero_typing">Engenharia e Análise de Dados | Backend Python | Automação.</span>
             </div>
             
             <div class="hero-buttons">
-                <a href="curriculo.pdf" target="_blank" class="btn primary">
+                <a href="curriculo.pdf" target="_blank" class="btn primary" data-i18n="btn_cv">
                     <i class="fas fa-download"></i> Baixar CV
                 </a>
-                <a href="#projects" class="btn secondary">Ver Projetos</a>
+                <a href="#projects" class="btn secondary" data-i18n="btn_projects">Ver Projetos</a>
             </div>
         </div>
     </section>
@@ -57,73 +63,71 @@
     <div class="container">
         
         <section id="about" class="section-padding">
-            <h2 class="section-title hidden">Sobre Mim</h2>
-            <p class="bio-text hidden">
-                Migrando do Suporte Técnico para a Análise de Dados. Meu foco é 
-                <strong>eficiência e integridade</strong>. Tenho experiência prática transformando 
-                dados brutos em insights (Tableau) e automatizando processos manuais (Python/SQL) 
-                para reduzir custos e SLAs.
+            <h2 class="section-title hidden" data-i18n="about_title">Sobre Mim</h2>
+            <p class="bio-text hidden" data-i18n="about_text">
+                Atualmente sou Estagiário de Dados na Autoglass, atuando na frente técnica de Governança de Dados. Meu foco é garantir a 
+                <strong>qualidade, automação e integridade</strong> das informações. Tenho experiência prática construindo pipelines (Python/Airflow), estruturando dados em Data Warehouse (Snowflake) e transformando dados brutos em insights estratégicos (Tableau).
             </p>
 
             <div class="values-grid">
             <div class="value-card glass-card hidden">
-                    <i class="fas fa-microchip icon-box"></i>
-                    <h3>Arquitetura de Dados</h3>
-                    <p>Experiência prática em integração Supabase (Cloud) e PostgreSQL local.</p>
+                    <div class="icon-box"><i class="fas fa-microchip"></i></div>
+                    <h3 data-i18n="about_card1_title">Arquitetura de Dados</h3>
+                    <p data-i18n="about_card1_desc">Experiência prática em integração Supabase (Cloud) e PostgreSQL local.</p>
                 </div>
             <div class="value-card glass-card hidden">
-                    <i class="fas fa-bolt icon-box"></i>
-                    <h3>Automação de processos</h3>
-                    <p>Redução drástica de tempo manual através de scripts Python e SQL.</p>
+                    <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                    <h3 data-i18n="about_card2_title">Automação de processos</h3>
+                    <p data-i18n="about_card2_desc">Redução drástica de tempo manual através de scripts Python e SQL.</p>
                 </div>
             <div class="value-card glass-card hidden">
-                    <i class="fas fa-sync-alt icon-box"></i>
-                    <h3>Melhoria Contínua</h3>
-                    <p>Foco constante em otimização de processos.</p>
+                    <div class="icon-box"><i class="fas fa-sync-alt"></i></div>
+                    <h3 data-i18n="about_card3_title">Melhoria Contínua</h3>
+                    <p data-i18n="about_card3_desc">Foco constante em otimização de processos.</p>
                 </div>
             </div>
         </section>
 
         <section id="experience" class="section-padding hidden">
-            <h2 class="section-title hidden">Experiência Profissional</h2>
+            <h2 class="section-title hidden" data-i18n="exp_title">Experiência Profissional</h2>
             <div class="experience-container">
                 
                 <div class="experience-card glass-card hidden">
                     <div class="exp-header">
-                        <h3>Estagiário de Dados</h3>
-                        <span class="exp-date">Mar 2026 - Atual</span>
+                        <h3 data-i18n="exp1_role">Estagiário de Dados</h3>
+                        <span class="exp-date" data-i18n="exp1_date">Mar 2026 - Atual</span>
                     </div>
-                    <h4 class="company-name">Autoglass (Programa de Estágio DataTeam)</h4>
+                    <h4 class="company-name" data-i18n="exp1_comp">Autoglass (Programa de Estágio DataTeam)</h4>
                     <ul class="exp-list">
-                        <li>Atuação na governança de dados em frente técnica, com foco em automação e qualidade.</li>
-                        <li>Desenvolvimento de automações com <strong>Python</strong> e orquestração de pipelines com <strong>Airflow (DAGs)</strong> e Jenkins.</li>
-                        <li>Análise e modelagem de dados no Data Warehouse (<strong>Snowflake</strong>) e catalogação no <strong>OpenMetadata</strong>.</li>
-                        <li>Criação de dashboards e análises para stakeholders utilizando <strong>Tableau</strong>.</li>
+                        <li data-i18n="exp1_desc1">Atuação na governança de dados em frente técnica, com foco em automação e qualidade.</li>
+                        <li data-i18n="exp1_desc2">Desenvolvimento de automações com <strong>Python</strong> e orquestração de pipelines com <strong>Airflow (DAGs)</strong> e Jenkins.</li>
+                        <li data-i18n="exp1_desc3">Análise e modelagem de dados no Data Warehouse (<strong>Snowflake</strong>) e catalogação no <strong>OpenMetadata</strong>.</li>
+                        <li data-i18n="exp1_desc4">Criação de dashboards e análises para stakeholders utilizando <strong>Tableau</strong>.</li>
                     </ul>
                 </div>
 
                 <div class="experience-card glass-card hidden">
                     <div class="exp-header">
-                        <h3>Assistente de Suporte Técnico Pleno</h3>
-                        <span class="exp-date">Ago 2025 - Mar 2026</span>
+                        <h3 data-i18n="exp2_role">Assistente de Suporte Técnico Pleno</h3>
+                        <span class="exp-date" data-i18n="exp2_date">Ago 2025 - Mar 2026</span>
                     </div>
                     <h4 class="company-name">GShield</h4>
                     <ul class="exp-list">
-                        <li>Otimização do tempo de resposta de 12h para 4h (Redução de 66% no SLA) através da reestruturação de processos.</li>
-                        <li>Desenvolvimento de scripts <strong>Python</strong> e arquitetura <strong>PostgreSQL</strong> para automação de backups e cadastro de ativos.</li>
-                        <li>Integração via JavaScript para eliminação de gargalos manuais no suporte.</li>
+                        <li data-i18n="exp2_desc1">Otimização do tempo de resposta de 12h para 4h (Redução de 66% no SLA) através da reestruturação de processos.</li>
+                        <li data-i18n="exp2_desc2">Desenvolvimento de scripts <strong>Python</strong> e arquitetura <strong>PostgreSQL</strong> para automação de backups e cadastro de ativos.</li>
+                        <li data-i18n="exp2_desc3">Integração via JavaScript para eliminação de gargalos manuais no suporte.</li>
                     </ul>
                 </div>
 
             <div class="experience-card glass-card hidden">
                     <div class="exp-header">
-                        <h3>Auxiliar Administrativo</h3>
-                        <span class="exp-date">Jan 2025 - Jul 2025</span>
+                        <h3 data-i18n="exp3_role">Auxiliar Administrativo</h3>
+                        <span class="exp-date" data-i18n="exp3_date">Jan 2025 - Jul 2025</span>
                     </div>
                     <h4 class="company-name">Escritórios Cibien</h4>
                     <ul class="exp-list">
-                        <li>Emissão e conferência de NF-e utilizando sistema ERP Automatiza, garantindo conformidade fiscal.</li>
-                        <li>Apoio no controle de fluxo de caixa e geração de relatórios de vendas via <strong>Excel</strong> para tomada de decisão.</li>
+                        <li data-i18n="exp3_desc1">Emissão e conferência de NF-e utilizando sistema ERP Automatiza, garantindo conformidade fiscal.</li>
+                        <li data-i18n="exp3_desc2">Apoio no controle de fluxo de caixa e geração de relatórios de vendas via <strong>Excel</strong> para tomada de decisão.</li>
                     </ul>
                 </div>
 
@@ -131,7 +135,7 @@
         </section>
 
         <section id="skills" class="section-padding">
-            <h2 class="section-title hidden">Tech Stack</h2>
+            <h2 class="section-title hidden" data-i18n="skills_title">Tech Stack</h2>
             <div class="skills-wrapper hidden">
                 <span class="tag"><i class="fab fa-python"></i> Python</span>
                 <span class="tag"><i class="fas fa-database"></i> SQL</span>
@@ -141,53 +145,63 @@
             </div>
 
             <div class="education-box glass-card hidden">
-                <h3><i class="fas fa-graduation-cap"></i> Formação</h3>
+                <h3 data-i18n="edu_title"><i class="fas fa-graduation-cap"></i> Formação</h3>
                 <div class="edu-item">
                     <span class="year">2025 - 2028</span>
                     <div>
-                        <strong>Sistemas de Informação</strong>
-                        <p>FAESA (Bacharelado)</p>
+                        <strong data-i18n="edu1_course">Sistemas de Informação</strong>
+                        <p data-i18n="edu1_degree">FAESA (Bacharelado)</p>
                     </div>
                 </div>
                 <div class="edu-item">
                     <span class="year">2025</span>
                     <div>
-                        <strong>Fundamentos Python 1</strong>
+                        <strong data-i18n="edu2_course">Fundamentos Python 1</strong>
                         <p>Cisco Networking Academy</p>
-                        <a href="certificado-python.pdf" target="_blank" class="link-small">Ver Certificado</a>
+                        <a href="certificado-python.pdf" target="_blank" class="link-small" data-i18n="edu_link">Ver Certificado</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="projects" class="section-padding">
-            <h2 class="section-title hidden">Projetos em Destaque</h2>
+            <h2 class="section-title hidden" data-i18n="proj_title">Projetos em Destaque</h2>
             <div class="projects-grid">
 
                 <div class="card glass-card hidden">
                     <div class="card-icon"><i class="fas fa-cogs"></i></div>
-                    <h3>Automação ETL</h3>
-                    <p>Sincronização segura entre Supabase (Cloud) e Postgres Local.</p>
-                    <a href="https://github.com/vitoroliversoares/etl-supabase-postgres" class="btn-card">Ver Código</a>
+                    <h3 data-i18n="proj1_title">Automação ETL</h3>
+                    <p data-i18n="proj1_desc">Sincronização segura entre Supabase (Cloud) e Postgres Local.</p>
+                    <a href="https://github.com/vitoroliversoares/etl-supabase-postgres" class="btn-card" data-i18n="proj_btn">Ver Código</a>
                 </div>
 
                 <div class="card glass-card hidden">
                     <div class="card-icon"><i class="fas fa-headset"></i></div>
-                    <h3>Sistema de Help Desk</h3>
-                    <p>Gestão de tickets de suporte com Backend Java e POO.</p>
-                    <a href="https://github.com/vitoroliversoares/SistemaChamadosHelpDesk" class="btn-card">Ver Código</a>
+                    <h3 data-i18n="proj2_title">Sistema de Help Desk</h3>
+                    <p data-i18n="proj2_desc">Gestão de tickets de suporte com Backend Java e POO.</p>
+                    <a href="https://github.com/vitoroliversoares/SistemaChamadosHelpDesk" class="btn-card" data-i18n="proj_btn">Ver Código</a>
                 </div>
 
             </div>
         </section>
 
         <section id="contact" class="section-padding footer-section">
-            <h2 class="section-title center hidden">Vamos Conversar?</h2>
+            <h2 class="section-title center hidden" data-i18n="contact_title">Vamos Conversar?</h2>
             <div class="social-big hidden">
                 <a href="https://www.linkedin.com/in/vitor-soares-ti/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/vitoroliversoares" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="mailto:vitordeoliveirasoares092@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
+
+            <div class="ai-disclaimer glass-card hidden">
+                <div class="ai-icon-wrapper">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <p data-i18n="ai_disclaimer">
+                    Este portfólio foi desenvolvido com auxílio de Inteligência Artificial Generativa. Como meu foco principal é em <strong>Dados e Backend</strong>, utilizei a IA para acelerar e aprimorar a construção deste Frontend interativo.
+                </p>
+            </div>
+            
             <p>© 2026 Vitor Soares</p>
         </section>
 
