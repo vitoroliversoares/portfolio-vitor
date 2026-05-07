@@ -19,6 +19,31 @@ body {
     line-height: 1.6;
 }
 
+/* =========================================
+   CUSTOM SCROLLBAR (GLASSMORPHISM)
+   ========================================= */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(10px);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.5);
+    border-radius: 10px;
+    border: 3px solid rgba(5, 5, 5, 0.8);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.8);
+}
+body.light-mode ::-webkit-scrollbar-track {
+    background: rgba(240, 242, 245, 0.8);
+}
+body.light-mode ::-webkit-scrollbar-thumb {
+    border: 3px solid rgba(240, 242, 245, 0.8);
+}
+
 .background-grid {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
     background-size: 50px 50px;
@@ -167,7 +192,7 @@ section {
     background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
     color: white; border: none;
 }
-.btn.primary:hover { opacity: 0.9; box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); }
+.btn.primary:hover { opacity: 0.9; box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
 
 .btn.secondary { 
     border: 1px solid transparent !important; 
@@ -180,10 +205,12 @@ section {
     border-color: var(--accent) !important; 
     color: var(--accent); 
     background: rgba(139, 92, 246, 0.1);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); 
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+    text-shadow: 0 0 10px var(--accent);
 }
 
-.btn-card { display: inline-block; margin-top: 15px; font-size: 0.9rem; color: var(--accent); text-decoration: none; font-weight: bold; }
+.btn-card { display: inline-block; margin-top: 15px; font-size: 0.9rem; color: var(--accent); text-decoration: none; font-weight: bold; transition: all 0.3s ease; }
+.btn-card:hover { color: var(--accent-glow); text-shadow: 0 0 12px var(--accent); }
 
 .hidden {
     opacity: 0;
@@ -426,18 +453,36 @@ body.light-mode .glass-nav {
     content: '';
     position: absolute;
     top: -50%; left: -50%; width: 200%; height: 200%;
-    background: conic-gradient(from 0deg, transparent 0%, transparent 30%, rgba(139, 92, 246, 0.15) 50%, transparent 70%, transparent 100%);
+    background: conic-gradient(from 0deg, transparent 0%, transparent 30%, rgba(139, 92, 246, 0.3) 50%, transparent 70%, transparent 100%);
     animation: rotate-glow 10s linear infinite;
     opacity: 0.2; /* Luz sutil constante */
     transition: opacity 0.5s ease;
     pointer-events: none;
     z-index: 0;
+    border-radius: 50%;
+    filter: blur(50px); /* Cria o aspecto de fumaça/névoa */
 }
 
 /* Garante que os textos do card fiquem acima do brilho giratório */
 .glass-card > * {
     position: relative;
     z-index: 1;
+}
+
+/* Transição suave para os textos dentro do card */
+.glass-card h3, .glass-card h4, .glass-card p, .glass-card li, .glass-card span {
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Brilho nos textos no Dark Mode APENAS quando o mouse passa diretamente sobre eles */
+.glass-card h3:hover, 
+.glass-card h4:hover, 
+.glass-card p:hover, 
+.glass-card li:hover,
+.glass-card span.exp-date:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 20px var(--accent);
+    color: #ffffff; /* Clareia os textos descritivos sob o mouse */
+    cursor: default; /* Mantém o cursor em formato de seta padrão */
 }
 
 .glass-card:hover {
@@ -459,6 +504,16 @@ body.light-mode .glass-card {
 body.light-mode .glass-card:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Ajuste do brilho do texto para o Light Mode APENAS quando o mouse passa sobre eles */
+body.light-mode .glass-card h3:hover, 
+body.light-mode .glass-card h4:hover, 
+body.light-mode .glass-card p:hover, 
+body.light-mode .glass-card li:hover,
+body.light-mode .glass-card span.exp-date:hover {
+    text-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+    color: var(--text-main);
 }
 
 /* =========================================
@@ -506,6 +561,18 @@ body.light-mode .glass-card:hover {
     right: -100px;
 }
 
+.blob-3 {
+    background: linear-gradient(to right, #db2777, #9333ea);
+    width: 300px; height: 300px;
+    top: 40%; left: -100px;
+}
+
+.blob-4 {
+    background: linear-gradient(to right, #0284c7, #2563eb);
+    width: 400px; height: 400px;
+    bottom: -50px; left: 30%;
+}
+
 body.light-mode .blob-1 {
     background: linear-gradient(to right, #818cf8, #93c5fd);
     opacity: 0.4;
@@ -513,6 +580,16 @@ body.light-mode .blob-1 {
 
 body.light-mode .blob-2 {
     background: linear-gradient(to right, #34d399, #6ee7b7);
+    opacity: 0.4;
+}
+
+body.light-mode .blob-3 {
+    background: linear-gradient(to right, #f472b6, #c084fc);
+    opacity: 0.4;
+}
+
+body.light-mode .blob-4 {
+    background: linear-gradient(to right, #38bdf8, #60a5fa);
     opacity: 0.4;
 }
 

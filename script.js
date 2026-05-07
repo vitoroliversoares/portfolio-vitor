@@ -64,15 +64,79 @@ if (themeBtn) {
     });
 }
 
-// Efeito Parallax no Scroll para as formas de fundo (Blobs)
+// Efeito Parallax no Scroll e no Mouse para as formas de fundo (Blobs)
 const blobs = document.querySelectorAll('.moving-blob');
 
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
+let currentScrollY = 0;
+let currentMouseX = 0;
+let currentMouseY = 0;
+
+const updateBlobs = () => {
     if (blobs.length > 0) {
-        blobs[0].style.transform = `translateY(${scrollY * 0.4}px)`; // Acompanha o scroll descendo
-        if (blobs[1]) blobs[1].style.transform = `translateY(${scrollY * -0.3}px)`; // Vai na direção oposta
+        // Blob 1: desce com o scroll, move na direção do mouse
+        const b1X = currentMouseX * 60;
+        const b1Y = (currentScrollY * 0.4) + (currentMouseY * 60);
+        blobs[0].style.transform = `translate(${b1X}px, ${b1Y}px)`;
+
+        // Blob 2: sobe com o scroll, move na direção oposta ao mouse
+        if (blobs[1]) {
+            const b2X = currentMouseX * -50;
+            const b2Y = (currentScrollY * -0.3) + (currentMouseY * -50);
+            blobs[1].style.transform = `translate(${b2X}px, ${b2Y}px)`;
+        }
+        
+        // Blob 3: move de forma mais sutil para a esquerda
+        if (blobs[2]) {
+            const b3X = currentMouseX * 40;
+            const b3Y = (currentScrollY * 0.2) + (currentMouseY * -40);
+            blobs[2].style.transform = `translate(${b3X}px, ${b3Y}px)`;
+        }
+
+        // Blob 4: vai mais rápido em direções contrárias
+        if (blobs[3]) {
+            const b4X = currentMouseX * -70;
+            const b4Y = (currentScrollY * -0.5) + (currentMouseY * 70);
+            blobs[3].style.transform = `translate(${b4X}px, ${b4Y}px)`;
+        }
     }
+};
+
+window.addEventListener('scroll', () => {
+    currentScrollY = window.scrollY;
+    updateBlobs();
+});
+
+window.addEventListener('mousemove', (e) => {
+    // Normaliza a posição do mouse para um valor entre -1 e 1 (centro da tela = 0)
+    currentMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    currentMouseY = (e.clientY / window.innerHeight) * 2 - 1;
+    updateBlobs();
+});
+
+// =========================================
+// EFEITO 3D HOVER (TILT) NOS CARDS DE VIDRO
+// =========================================
+const glassCards = document.querySelectorAll('.glass-card');
+
+glassCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; // Posição X dentro do cartão
+        const y = e.clientY - rect.top;  // Posição Y dentro do cartão
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -8; // Inclinação máxima de 8 graus
+        const rotateY = ((x - centerX) / centerX) * 8;
+
+        card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
+        card.style.transform = `perspective(1000px) translateY(-10px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transition = ''; // Restaura a transição do CSS original
+        card.style.transform = '';  // Volta o card para a posição original
+    });
 });
 
 // Scroll suave forçado para links de navegação interno
